@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Participez à la conception d'une voiture autonome</title>
+    </head>
+
+    <body>
+      <h1>P8-Participez à la conception d'une voiture autonome</h1>
+      <h2>interface pour tester l’API et afficher les images et masks</h2>
+
+      <img src="https://user.oc-static.com/upload/2019/10/24/15719060749143_image2.png" width='20%' height='30%'>
+      <p>Veuillez choisissez une image puis cliquer sur sélectionner:</p>
+
+                <form action="predicted" method="POST">
+                  <td>
+
+                    <select name="option" width="100%">
+                    {% for o in img_list %}
+                        <option value="{{ o }}" SELECTED>{{ o }}</option>
+                    {% endfor %}
+                      </select>
+                      </td>
+                    <td>
+                      <input class="button1" type="submit" value="Sélectionner">
+                    </td>
+                </form>
+
+  
+    <p> Résultats :</p>
+
+   <img class="NO-CACHE" src="{% for message in get_flashed_messages(category_filter=['image']) %}{{ message }}{% endfor %}" width="100%">
+   
+   
+   <script>
+   
+   var items = document.querySelectorAll("img.NO-CACHE");
+      for (var i = items.length; i--;) {
+    var img = items[i];
+    img.src = img.src + '?' + Date.now();}
+
+
+  </script>
+
+
+    </body>
+</html>
